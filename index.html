@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Gaji Penduduk Jawa Barat</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .chart-item {
+            width: 45%;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .chart-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard Gaji Penduduk Jawa Barat</h1>
+    <div class="chart-container">
+        <div class="chart-item">
+            <canvas id="salaryLineChart"></canvas>
+        </div>
+        <div class="chart-item">
+            <canvas id="incomeBarChart"></canvas>
+        </div>
+        <div class="chart-item">
+            <canvas id="jobCategoryChart"></canvas>
+        </div>
+        <div class="chart-item">
+            <canvas id="regionIncomeDistributionChart"></canvas>
+        </div>
+        <div class="chart-item">
+            <canvas id="monthlySavingsChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Grafik Gaji Rata-rata di Kota (Line)
+        new Chart(document.getElementById('salaryLineChart'), {
+            type: 'line',
+            data: {
+                labels: ['Bandung', 'Bekasi', 'Bogor', 'Cirebon', 'Depok', 'Sukabumi'],
+                datasets: [{
+                    label: 'Gaji Rata-rata (Rp)',
+                    data: [4500000, 5000000, 4800000, 4200000, 5100000, 4000000],
+                    borderColor: 'blue',
+                    backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                    }
+                }
+            }
+        });
+
+        // Grafik Total Pendapatan per Kota (Bar)
+        new Chart(document.getElementById('incomeBarChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Bandung', 'Bekasi', 'Bogor', 'Cirebon', 'Depok', 'Sukabumi'],
+                datasets: [{
+                    label: 'Total Pendapatan (Rp)',
+                    data: [900000000, 1200000000, 1000000000, 750000000, 1250000000, 700000000],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                    }
+                }
+            }
+        });
+
+        // Kategori Pekerjaan Penduduk (Doughnut)
+        new Chart(document.getElementById('jobCategoryChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Pegawai Negeri', 'Swasta', 'Petani', 'Wiraswasta'],
+                datasets: [{
+                    label: 'Kategori Pekerjaan',
+                    data: [30, 45, 15, 10],
+                    backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384', '#4BC0C0']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                    }
+                }
+            }
+        });
+
+        // Distribusi Gaji Berdasarkan Kota (Pie)
+        new Chart(document.getElementById('regionIncomeDistributionChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Bandung', 'Bekasi', 'Bogor', 'Cirebon', 'Depok', 'Sukabumi'],
+                datasets: [{
+                    label: 'Distribusi Gaji (Rp)',
+                    data: [25, 30, 20, 10, 10, 5],
+                    backgroundColor: ['#800080', '#FFA500', '#36A2EB', '#FF6384', '#4BC0C0', '#FFCE56']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                    }
+                }
+            }
+        });
+
+        // Grafik Tabungan Bulanan per Kota (Radar)
+        new Chart(document.getElementById('monthlySavingsChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Bandung', 'Bekasi', 'Bogor', 'Cirebon', 'Depok', 'Sukabumi'],
+                datasets: [{
+                    label: 'Tabungan Bulanan (Rp)',
+                    data: [900000, 1000000, 950000, 850000, 1100000, 800000],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
